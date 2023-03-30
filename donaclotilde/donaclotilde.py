@@ -4,8 +4,8 @@
 from flask import g
 
 import sqlite3
-DATABASE = 'donaclotilde/database.db'
-
+#DATABASE = 'donaclotilde/database.db'
+DATABASE = 'gg/static/db/database.db'
 class Donaclotilde:
     def __init__(self,):
         

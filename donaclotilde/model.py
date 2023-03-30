@@ -431,3 +431,18 @@ class Model(Donaclotilde):
 		#print(sql)
 		self.insert(sql)
 		return True
+
+	def lista_usuarios(self):
+
+		self.select('*')
+
+		self.from_table('users')
+
+		sql = self.get()
+		data = self.result_list(sql)
+		
+		if data != []:
+
+			return data
+
+		return False

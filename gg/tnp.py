@@ -137,7 +137,7 @@ def view(id):
 	data = asd.ver_tnp(id)
 	infracao = asd.ver_infracao(data[0][3])
 
-	return render_template('tnp_ver.html' , data=data, infracao=infracao)
+	return render_template('tnp/tnp_ver.html' , data=data, infracao=infracao)
 
 
 
@@ -250,7 +250,13 @@ def painel():
 
 	if 'username' not in session:
 		return redirect(url_for('users.login'))
-	return "tnp 3"
+	if session['username'][0]!="Admin":
+		return redirect(url_for('tnp.logout'))	
+	
+	usuarios = asd.lista_usuarios()
+	return render_template('tnp/tnp_painel.html', usuarios=usuarios)
+
+
 	#colocar funcoes de painel
 	#numero de multas
 	#mensagens de correção

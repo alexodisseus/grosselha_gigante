@@ -26,8 +26,12 @@ def login():
 			if validator[0][1] != 'True':
 				return render_template('validar.html', date=data)
 			
+			
 			session['username'] = validator[0]
-			return redirect(url_for('tnp.painel'))
+			if session['username'][0]=="Admin":
+				return redirect(url_for('tnp.painel'))	
+			
+			return redirect(url_for('tnp.list_all'))
 		else:
 			return render_template('login.html' , login =True)
 		
